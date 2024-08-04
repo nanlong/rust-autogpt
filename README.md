@@ -1,0 +1,3 @@
+# Rust AutoGPT
+
+- Auto Gippity
