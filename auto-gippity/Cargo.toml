@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 ai_functions = "0.1.1"
+anyhow = "1.0.86"
 async-trait = "0.1.81"
 crossterm = "0.28.1"
 dotenvy = "0.15.7"
