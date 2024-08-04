@@ -9,5 +9,6 @@ fn main() -> anyhow::Result<()> {
     let user_req = get_user_response("What webserver are we building today?")?;
 
     dbg!(user_req);
+
     Ok(())
 }
