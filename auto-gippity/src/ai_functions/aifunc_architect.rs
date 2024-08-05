@@ -38,7 +38,7 @@ pub fn print_site_urls(_project_description: &str) {
     /// Output: Prints a list response of external urls in the following format:
     /// ["url1", "url2", "url3", ...]
     /// Example:
-    ///     website_team_spec = "website_purpose: Some("\"Provides Crypto Price Data from Binance and Kraken\"")"
+    ///     website_team_spec = "website_purpose: Provides Crypto Price Data from Binance and Kraken"
     ///     prints:
     ///     ["https://api.binance.com/api/v3/exchangeInfo", "https://api.binance.com/api/v3/klines?sysbol=BTCUSDT&interval=1d"]
     println!(OUTPUT)
