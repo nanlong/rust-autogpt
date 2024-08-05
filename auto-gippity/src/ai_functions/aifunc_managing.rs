@@ -1,5 +1,6 @@
 use ai_functions::ai_function;
 
+// 将用户需求转换成具体目标
 #[ai_function]
 pub fn convert_user_input_to_goal(_user_request: &str) {
     /// Input: Takes in a user request

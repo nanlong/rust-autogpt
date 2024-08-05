@@ -7,10 +7,9 @@ use std::env;
 pub async fn call_gpt(messages: Vec<Message>) -> anyhow::Result<String> {
     dotenv().expect("Failed to load .env file");
 
-    let url = env::var("OPEN_AI_URL").expect("OPEN_AI_URL not found in environment variables");
-    let api_key = env::var("OPEN_AI_KEY").expect("OPEN_AI_KEY not found in environment variables");
-    let model =
-        env::var("OPEN_AI_MODEL").expect("OPEN_AI_MODEL not found in environment variables");
+    let url = env::var("OPENAI_URL").expect("OPENAI_URL not found in environment variables");
+    let api_key = env::var("OPENAI_KEY").expect("OPENAI_KEY not found in environment variables");
+    let model = env::var("OPENAI_MODEL").expect("OPENAI_MODEL not found in environment variables");
 
     let mut headers = HeaderMap::new();
 
