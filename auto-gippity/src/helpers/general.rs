@@ -1,3 +1,5 @@
+use serde::de::DeserializeOwned;
+
 use crate::{apis::call_request::call_gpt, models::general::llm::Message};
 
 use super::command_line::PrintCommand;
@@ -39,12 +41,25 @@ pub async fn ai_task_request(
 
     let llm_response = match llm_response_res {
         Ok(response) => response,
-        Err(_) => call_gpt(vec![extended_msg.clone()])
+        Err(_) => call_gpt(vec![extended_msg])
             .await
             .expect("Failed twice to call OpenAI"),
     };
 
     Ok(llm_response)
+}
+
+// Performs call to LLM GPT - Decode
+pub async fn ai_task_request_decode<T: DeserializeOwned>(
+    msg_context: &str,
+    agent_position: &str,
+    agent_operation: &str,
+    function_pass: for<'a> fn(&'a str) -> &'static str,
+) -> anyhow::Result<T> {
+    let llm_response =
+        ai_task_request(msg_context, agent_position, agent_operation, function_pass).await?;
+    let decoded_response = serde_json::from_str(&llm_response)?;
+    Ok(decoded_response)
 }
 
 #[cfg(test)]
