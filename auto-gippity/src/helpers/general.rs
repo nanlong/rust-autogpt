@@ -36,7 +36,6 @@ pub async fn ai_task_request(
 ) -> anyhow::Result<String> {
     // Extend ai function
     let extended_msg = extend_ai_function(function_pass, msg_context);
-
     // Print current status
     PrintCommand::AICall.print_agent_message(agent_position, agent_operation)?;
 
@@ -93,10 +92,11 @@ pub fn save_api_endpoints(api_endpoints: &str) {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ai_functions::aifunc_managing::convert_user_input_to_goal;
 
     #[test]
     fn test_extending_ai_function() {
+        use crate::ai_functions::aifunc_managing::convert_user_input_to_goal;
+
         let extended_str = extend_ai_function(convert_user_input_to_goal, "dummy variable");
         dbg!(&extended_str);
         assert_eq!(extended_str.role, "system");
@@ -115,6 +115,26 @@ mod tests {
     //     .await?;
 
     //     dbg!(&res);
+
+    //     Ok(())
+    // }
+
+    // #[tokio::test]
+    // async fn test_ai_task_request_decode() -> anyhow::Result<()> {
+    //     use crate::ai_functions::aifunc_architect::print_project_scope;
+    //     use crate::models::agents::agent_traits::ProjectScope;
+
+    //     let msg_context = "Build me a websserver for making stock price api requests.";
+
+    //     let ai_response = ai_task_request_decode::<ProjectScope>(
+    //         &msg_context,
+    //         "Solution Architect",
+    //         get_function_string!(print_project_scope),
+    //         print_project_scope,
+    //     )
+    //     .await?;
+
+    //     dbg!(&ai_response);
 
     //     Ok(())
     // }

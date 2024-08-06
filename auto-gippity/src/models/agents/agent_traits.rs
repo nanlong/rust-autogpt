@@ -1,4 +1,6 @@
+use crate::models::agent_basic::basic_agent::BasicAgent;
 use serde::{Deserialize, Serialize};
+use std::fmt::Debug;
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 pub struct RouteObject {
@@ -11,16 +13,23 @@ pub struct RouteObject {
 
 #[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq)]
 pub struct ProjectScope {
-    pub is_crud_required: bool,
+    pub is_curd_required: bool,
     pub is_user_login_and_logout: bool,
     pub is_external_urls_required: bool,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Default, Serialize, Deserialize, Clone, PartialEq)]
 pub struct FactSheet {
     pub project_description: String,
     pub project_scope: Option<ProjectScope>,
     pub external_urls: Option<Vec<String>>,
     pub backend_code: Option<String>,
     pub api_endpoint_schema: Option<Vec<RouteObject>>,
+}
+
+#[async_trait::async_trait]
+pub trait SpecialFunctions: Debug {
+    fn get_attributes_from_agent(&self) -> &BasicAgent;
+
+    async fn execute(&mut self, factsheet: &mut FactSheet) -> anyhow::Result<()>;
 }

@@ -26,3 +26,8 @@ Backend Developer (程序员):
 - 提示工程，为 Agent 设定人设、任务目标、处理流程、结果输出等
 - 向量数据库，为 Agent 增加长期记忆功能
 - 功能函数，为 Agent 增加感知能力和行动能力
+- 当要求返回 json 格式时，最好是将需求描述成一个 Function，增加 Input、Function、Important、Output、Example 等字段，方便 Agent 生成 json 格式的需求描述
+
+## 工具
+
+    - [Prompt生成](https://console.anthropic.com)

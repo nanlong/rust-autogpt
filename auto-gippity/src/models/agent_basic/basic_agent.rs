@@ -11,6 +11,7 @@ pub enum AgentState {
     Finished,
 }
 
+#[derive(Debug)]
 pub struct BasicAgent {
     // 任务目标
     pub objective: String,
