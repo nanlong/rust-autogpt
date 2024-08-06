@@ -12,11 +12,14 @@ pub mod helpers;
 pub mod models;
 
 use helpers::command_line::get_user_response;
+use models::agents_manager::managing_agent::ManagingAgent;
 
-fn main() -> anyhow::Result<()> {
-    let user_req = get_user_response("What webserver are we building today?")?;
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    let user_req = get_user_response("What website are we building today?")?;
+    let mut managing_agent = ManagingAgent::try_new(&user_req).await?;
 
-    dbg!(user_req);
+    managing_agent.execute_project().await?;
 
     Ok(())
 }

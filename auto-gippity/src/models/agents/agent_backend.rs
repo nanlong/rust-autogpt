@@ -277,7 +277,7 @@ impl SpecialFunctions for AgentBackendDeveloper {
 
                     save_api_endpoints(&api_endpoints_str);
 
-                    PrintCommand::Issue.print_agent_message(
+                    PrintCommand::UnitTest.print_agent_message(
                         self.attributes.get_position(),
                         "Backend testing complete...",
                     )?;

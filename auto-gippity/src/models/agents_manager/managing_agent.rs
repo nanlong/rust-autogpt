@@ -5,6 +5,7 @@ use crate::{
         agent_basic::basic_agent::{AgentState, BasicAgent},
         agents::{
             agent_architect::AgentSolutionArchitect,
+            agent_backend::AgentBackendDeveloper,
             agent_traits::{FactSheet, SpecialFunctions},
         },
     },
@@ -54,7 +55,7 @@ impl ManagingAgent {
 
     fn create_agents(&mut self) {
         self.add_agent(Box::new(AgentSolutionArchitect::new()));
-        // todo: add backend agent
+        self.add_agent(Box::new(AgentBackendDeveloper::new()));
     }
 
     pub async fn execute_project(&mut self) -> anyhow::Result<()> {

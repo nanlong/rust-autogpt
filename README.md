@@ -31,3 +31,8 @@ Backend Developer (程序员):
 ## 工具
 
     - [Prompt生成](https://console.anthropic.com)
+
+# Youtube Channels
+
+- Code Raiders
+- Crypto Wizards
