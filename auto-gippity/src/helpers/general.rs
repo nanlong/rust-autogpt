@@ -7,6 +7,7 @@ use std::fs;
 const CODE_TEMPLATE_PATH: &str = "template/code_template.rs";
 const EXEC_MAIN_PATH: &str = "template/main.rs";
 const API_SCHEMA_PATH: &str = "schema/api_schema.json";
+pub const WEB_SERVER_PROJECT_PATH: &str = "template";
 
 // Extend ai function to encourage specific output
 pub fn extend_ai_function(ai_func: fn(&str) -> &'static str, func_input: &str) -> Message {
@@ -75,6 +76,12 @@ pub async fn check_status_code(client: &Client, url: &str) -> anyhow::Result<u16
 pub fn read_code_template_contents() -> String {
     let path = String::from(CODE_TEMPLATE_PATH);
     fs::read_to_string(path).expect("Failed to read code template")
+}
+
+// Get Exec Main
+pub fn read_exec_main_contents() -> String {
+    let path = String::from(EXEC_MAIN_PATH);
+    fs::read_to_string(path).expect("Failed to read main file")
 }
 
 // Save New Backend Code
